@@ -4,22 +4,40 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\TextCard;
+use TCG\Voyager\Facades\Voyager;
 
 class PagesController extends Controller
 {
     //
 
 
-    public function index($lang = 'pt')
+    public function index()
     {
+
+        //obter idioma do setLocale
+        $lang = app()->getLocale();
+
         if (!in_array($lang, ['pt', 'en'])) {
             abort(404);
         }
+
         $menus = Page::where('is_menu', 1)->orderBy('menu_order', 'asc')->get();
-        return view('frontend.homepage', compact('menus', 'lang'));
+        if ($lang == 'pt') {
+            $slug = '/';
+        } else {
+            $slug = '/en';
+        }
+      
+
+
+
+        $page = Page::whereTranslation('slug', $slug)->firstOrFail();
+        return view('frontend.pages.home', compact('menus', 'lang', 'page'));
     }
     public function show($lang = 'pt', $slug = '')
     {
+
 
         if (!in_array($lang, ['pt', 'en'])) {
             abort(404);
@@ -37,14 +55,25 @@ class PagesController extends Controller
         $page = Page::whereTranslation('slug', $slug)->firstOrFail();
 
 
-        return view('frontend.page', compact('page', 'lang', 'menus'));
+        if ($page->slug == 'contactos') {
+            return view('frontend.pages.contacts', compact('menus', 'lang', 'page'));
+        } elseif ($page->slug == 'sobre-a-qorus') {
+            return view('frontend.pages.about', compact('menus', 'lang', 'page'));
+        } elseif ($page->slug == 'servicos') {
+
+            $otherTexts = TextCard::where('page_id', $page->id)->get();
+          
+            return view('frontend.pages.services', compact('menus', 'lang', 'page', 'otherTexts'));
+        } elseif ($page->slug == 'inovacao-e-sustentabilidade') {
+            return view('frontend.pages.inovation', compact('menus', 'lang', 'page'));
+        }
+
+        return view('frontend.pages.home', compact('menus', 'lang', 'page'));
     }
 
     public function contacts($lang = 'pt')
     {
         $menus = Page::where('is_menu', 1)->get();
-
-
         return view('frontend.contacts', compact('lang', 'menus'));
     }
 

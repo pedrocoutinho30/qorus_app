@@ -1,83 +1,57 @@
-<div class="footer">
-
-    <div class="footer-left">
-        @if($lang == 'pt')
-        <a href="/pt/politica-de-privacidade" class="">Políticas de Privacidade</a> |
-        <a href="/pt/termos-e-condicoes" class="">Termos e Condições</a> |
-        <a href="/pt/contactos" class="">Contatos</a>
-        @else
-        <a href="/en/privacy-policies" class="">Privacy Policies</a> |
-        <a href="/en/terms-and-conditions" class="">Terms and Conditions
-        </a> |
-        <a href="/en/contacts" class="">Contacts</a>
-
-        @endif
-    </div>
-    <div class="footer-center">
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-    </div>
-    <div class="footer-right">
-        <p>© {{ date('Y') }} Qorus Group. Todos os direitos reservados.</p>
-    </div>
-</div>
+<footer class="{{ $footerColor ?? 'footer-white' }}">
+    <div class="footer-line"></div>
+    <div class="footer-text">2025 © Qorus Group</div>
+</footer>
 
 <style>
-    .footer {
+    /* Garante que o body ocupe pelo menos 100% da altura da viewport */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-        font-size: 0.9em;
-        color: #fff;
-        padding: 10px 40px;
-        background-color: rgba(0, 0, 0, 0.8);
-        flex-wrap: wrap;
-        /* Permite que os itens quebrem linha */
+        flex-direction: column;
     }
 
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        flex: 1;
-        margin: 10px 0;
-        /* Adiciona margem vertical para espaçamento */
+    /* O conteúdo principal ocupa o espaço restante */
+    .content {
+        flex: 1; /* Faz o conteúdo ocupar o espaço restante */
     }
 
-    .footer-left {
+    footer {
+        width: 100%;
+        background-color: transparent;
+        padding: 10vh 0 5vh 0;
+        z-index: 100;
         text-align: left;
     }
 
-    .footer-center {
-        text-align: center;
+    .footer-white .footer-line {
+        background-color: white;
     }
 
-    .footer-right {
-        text-align: right;
+    .footer-white .footer-text {
+        color: white;
     }
 
-    .footer a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 5px;
+    .footer-black .footer-line {
+        background-color: black;
     }
 
-    .footer a:hover {
-        text-decoration: underline;
+    .footer-black .footer-text {
+        color: black;
     }
 
-    @media (max-width: 768px) {
-        .footer {
-            flex-direction: column;
-            /* Alinha os itens em coluna */
-            text-align: center;
-            /* Centraliza o texto */
-        }
+    .footer-line {
+        width: calc(100% - 18.5vh); /* Reduz a largura total para criar margem */
+        height: 2px;
+        margin: 0 auto; /* Centraliza horizontalmente */
+    }
 
-        .footer-left,
-        .footer-center,
-        .footer-right {
-            text-align: center;
-            /* Centraliza o texto */
-        }
+    .footer-text {
+        font-family: 'Aeonik-Regular', sans-serif;
+        font-size: 14px;
+        margin-left: 9vh; /* Margem à esquerda */
+        margin-top: 5px;
     }
 </style>
