@@ -26,7 +26,7 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(255, 246, 219), #ffffff);
+        background: linear-gradient(to bottom, rgb(253, 248, 234), #ffffff);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }

@@ -56,16 +56,16 @@ class PagesController extends Controller
 
 
         if ($page->slug == 'contactos') {
-            return view('frontend.pages.contacts', compact('menus', 'lang', 'page'));
+            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            return view('frontend.pages.contacts', compact('menus', 'lang', 'page', 'otherTexts'));
         } elseif ($page->slug == 'sobre-a-qorus') {
             return view('frontend.pages.about', compact('menus', 'lang', 'page'));
         } elseif ($page->slug == 'servicos') {
-
-            $otherTexts = TextCard::where('page_id', $page->id)->get();
-          
+            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
             return view('frontend.pages.services', compact('menus', 'lang', 'page', 'otherTexts'));
         } elseif ($page->slug == 'inovacao-e-sustentabilidade') {
-            return view('frontend.pages.inovation', compact('menus', 'lang', 'page'));
+            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            return view('frontend.pages.inovation', compact('menus', 'lang', 'page', 'otherTexts'));
         }
 
         return view('frontend.pages.home', compact('menus', 'lang', 'page'));

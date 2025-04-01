@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
+use App\Http\Controllers\FormController;
 
 
 /*
@@ -64,10 +65,10 @@ Route::get('/{lang}/{slug}', 'App\Http\Controllers\PagesController@show')
     ->where('lang', 'pt|en')
     ->name('page.show');
 
+
+Route::post('/submit-form', [FormController::class, 'store'])->name('form.submit');
 // Route::get('/{lang}/{contact}', 'App\Http\Controllers\PagesController@contacts')->where('lang', 'pt|en')->where('contact', 'contactos|contacts')->name('page.contacts');
 // Route::get('/{lang}/{policy}', 'App\Http\Controllers\PagesController@privacy')->where('lang', 'pt|en')->where('policy', 'politica-de-privacidade|privacy-policies')->name('page.privacy');
 // Route::get('/{lang}/{terms}', 'App\Http\Controllers\PagesController@terms')->where('lang', 'pt|en')->where('terms', 'termos-e-condicoes|terms-and-conditions')->name('page.terms');
 
 // Route::get('/{lang}/{slug}',  'App\Http\Controllers\PagesController@show')->where('lang', 'pt|en')->name('page.show');
-
-

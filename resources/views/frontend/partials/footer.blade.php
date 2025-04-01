@@ -1,4 +1,4 @@
-<footer class="{{ $footerColor ?? 'footer-white' }}">
+<footer class="{{ $footerColor ?? 'footer-white' }} {{ $footerStyle ?? '' }}">
     <div class="footer-line"></div>
     <div class="footer-text">2025 © Qorus Group</div>
 </footer>
@@ -53,5 +53,8 @@
         font-size: 14px;
         margin-left: 9vh; /* Margem à esquerda */
         margin-top: 5px;
+    }
+    .grey{
+        background-color: rgb(186, 186, 186)
     }
 </style>
