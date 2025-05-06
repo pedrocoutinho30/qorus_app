@@ -8,15 +8,19 @@
 @endif
 
 @if($errors->any())
-<div class="alert alert-danger">
+<div class="alert alert-danger" id="error-alert">
     <ul>
-        @foreach($errors->all() as $error)
+        @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
     </ul>
 </div>
 @endif
 <div class="container-conctacts">
+    <!-- colocar imagem à direita -->
+    <div class="image-contacts-up">
+        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image-top">
+    </div>
     <div class="title-contacts">
         {!!$page->getTranslatedAttribute('body', $lang)!!}
     </div>
@@ -47,12 +51,12 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(253, 248, 234), #ffffff);
+        background: linear-gradient(to bottom, rgb(248, 244, 238), #ffffff);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
 
-    .container-contacts {
+    .container-conctacts {
         display: flex;
         flex-direction: column;
         /* Dispor os elementos em coluna */
@@ -73,13 +77,26 @@
         /* Fonte personalizada */
         color: rgb(0, 0, 0);
         /* Cor preta */
-        margin-top: 30%;
+        margin-top: 15%;
         margin-left: 5%;
+    }
+
+    .image-contacts-up {
+        position: absolute;
+        /* Permite posicionar a imagem em relação ao contêiner pai */
+        top: 20%;
+        /* Ajuste para posicionar acima da linha do título */
+        right: 10%;
+        /* Alinha a imagem à direita */
+        width: 300px;
+        /* Ajuste o tamanho da imagem conforme necessário */
+        z-index: 1;
+        /* Garante que a imagem fique acima de outros elementos, se necessário */
     }
 
     hr {
         margin-bottom: 4%;
-        margin-top: 10%;
+        margin-top: 7%;
         margin-left: 5%;
         margin-right: 5%;
         /* Margem superior */
@@ -156,29 +173,99 @@
         /* Garante que o footer fique acima da imagem */
     }
 
-    .alert-success {
+
+    body.contacts-page .close-menu {
+        background: none !important;
+        /* Remove qualquer fundo */
+        border: none !important;
+        /* Remove qualquer borda */
+        box-shadow: none !important;
+        /* Remove qualquer sombra */
+        outline: none !important;
+        /* Remove o contorno */
+    }
+
+    @media (max-width: 768px) {
+
+        .title-contacts {
+            font-size: 40px;
+            /* Fonte personalizada */
+            margin-top: 25%;
+        }
+
+        .image-contacts-up {
+            position: absolute;
+            /* Permite posicionar a imagem em relação ao contêiner pai */
+            top: 15%;
+            /* Ajuste para posicionar acima da linha do título */
+            right: 10%;
+            /* Alinha a imagem à direita */
+            width: 80px;
+            /* Ajuste o tamanho da imagem conforme necessário */
+            z-index: 1;
+            /* Garante que a imagem fique acima de outros elementos, se necessário */
+        }
+
+        .content-info-contacts {
+            flex-direction: column;
+            /* Alinha os elementos em coluna */
+            align-items: flex-start;
+            /* Alinha os elementos à esquerda */
+            gap: 15px;
+            /* Espaçamento entre os elementos */
+            font-size: 18px;
+        }
+
+        .excerpt,
+        .contact-details {
+            width: 100%;
+            font-size: 18px;
+            line-height: 1.2;
+            /* Faz os elementos ocuparem toda a largura */
+        }
+
+        .contact-email,
+        .contact-phone {
+            line-height: 0.7;
+            /* Define o espaçamento entre as linhas */
+        }
+    }
+
+    .alert {
         position: fixed;
-        /* Fixa a mensagem no canto superior esquerdo */
-        top: 10px;
-        /* Distância do topo */
-        right: 10px;
-        /* Distância da esquerda */
-        background-color: rgba(0, 128, 0, 0.8);
-        /* Verde com transparência */
-        color: white;
-        /* Cor do texto */
-        padding: 10px 20px;
-        /* Espaçamento interno */
+        top: 12%;
+        right: 20px;
+        z-index: 9999;
+        /* Valor alto para garantir que fique acima de tudo */
+        padding: 15px 20px;
         border-radius: 5px;
-        /* Bordas arredondadas */
         font-size: 14px;
-        /* Tamanho da fonte */
-        z-index: 1000;
-        /* Garante que fique acima de outros elementos */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        /* Adiciona uma leve sombra */
-        transition: opacity 0.5s ease;
-        /* Transição suave para desaparecer */
+        box-shadow: 0 2px 5px rgba(47, 47, 47, 0.32);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 <script>

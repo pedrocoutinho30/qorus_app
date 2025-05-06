@@ -48,7 +48,6 @@
 
         }
 
-
         body.menu-open {
             overflow: hidden;
             /* Bloqueia o scroll lateral */
@@ -56,74 +55,20 @@
 
         .content {
             flex: 1;
-        }
-
-        /** Animação */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            /* Cor de fundo da animação */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            /* Garante que a animação fique acima de todo o conteúdo */
-        }
-
-        .animation-container {
-            position: relative;
-            width: 100px;
-            height: 100px;
-        }
-
-        .animation-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: circular-motion 10s linear infinite;
-            /* Animação de rotação */
-        }
-
-        .animation-container {
-            position: relative;
-            width: 100px;
-            height: 100px;
-        }
-
-        .animation-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            animation: spiral-motion 10s linear infinite;
-            /* Animação em espiral */
-        }
-
-        @keyframes spiral-motion {
-            0% {
-                transform: rotate(0deg) translateX(0) rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(90deg) translateX(25px) rotate(-90deg);
-            }
-
-            50% {
-                transform: rotate(180deg) translateX(50px) rotate(-180deg);
-            }
-
-            75% {
-                transform: rotate(270deg) translateX(75px) rotate(-270deg);
-            }
-
-            100% {
-                transform: rotate(360deg) translateX(100px) rotate(-360deg);
-            }
+            z-index: 1;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Certifique-se de ter o jQuery -->
+
+    <script>
+        // Garante que a página vá para o topo quando recarregada
+        $(document).ready(function() {
+            $(window).scrollTop(0); // Define a rolagem para o topo da página
+            $(window).trigger('scroll');
+        });
+    </script>
 </body>
+
+
 
 </html>

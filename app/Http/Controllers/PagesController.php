@@ -28,43 +28,48 @@ class PagesController extends Controller
         } else {
             $slug = '/en';
         }
-      
-
-
 
         $page = Page::whereTranslation('slug', $slug)->firstOrFail();
         return view('frontend.pages.home', compact('menus', 'lang', 'page'));
     }
     public function show($lang = 'pt', $slug = '')
     {
-
-
         if (!in_array($lang, ['pt', 'en'])) {
             abort(404);
         }
 
-        $menus = Page::where('is_menu', 1)->get();
-
+        // Cache para os menus
+        $menus = cache()->remember("menus_{$lang}", 60 * 60, function () {
+            return Page::where('is_menu', 1)->get();
+        });
 
         // Se o slug for nulo, redireciona para a página inicial do idioma
         if (is_null($slug)) {
             return view('frontend.homepage', compact('menus', 'lang'));
         }
 
+        // Cache para a página
+        $page = cache()->remember("page_{$lang}_{$slug}", 60 * 60, function () use ($slug) {
+            return Page::whereTranslation('slug', $slug)->firstOrFail();
+        });
 
-        $page = Page::whereTranslation('slug', $slug)->firstOrFail();
-
-
+        // Cache para textos adicionais, se aplicável
         if ($page->slug == 'contactos') {
-            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            $otherTexts = cache()->remember("otherTexts_{$lang}_contactos", 60 * 60, function () use ($page) {
+                return TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            });
             return view('frontend.pages.contacts', compact('menus', 'lang', 'page', 'otherTexts'));
         } elseif ($page->slug == 'sobre-a-qorus') {
             return view('frontend.pages.about', compact('menus', 'lang', 'page'));
         } elseif ($page->slug == 'servicos') {
-            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            $otherTexts = cache()->remember("otherTexts_{$lang}_servicos", 60 * 60, function () use ($page) {
+                return TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            });
             return view('frontend.pages.services', compact('menus', 'lang', 'page', 'otherTexts'));
         } elseif ($page->slug == 'inovacao-e-sustentabilidade') {
-            $otherTexts = TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            $otherTexts = cache()->remember("otherTexts_{$lang}_inovacao", 60 * 60, function () use ($page) {
+                return TextCard::where('page_id', $page->id)->orderBy('order', 'asc')->get();
+            });
             return view('frontend.pages.inovation', compact('menus', 'lang', 'page', 'otherTexts'));
         }
 

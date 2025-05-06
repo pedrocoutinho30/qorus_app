@@ -38,6 +38,7 @@
     </div>
 
 </div>
+
 @include('frontend.partials.footer', ['footerColor' => 'footer-black', 'footerStyle' => 'grey'])
 
 @endsection
@@ -47,7 +48,7 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(253, 248, 234), #ffffff);
+        background: linear-gradient(to bottom, rgb(248, 244, 238), #ffffff);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
@@ -63,32 +64,35 @@
         padding-top: 100px;
         width: 100vw;
         max-width: 100%;
-        margin-top: 8%;
-        margin-bottom: auto;
+        margin-top: 6%;
         /* Ajuste conforme necessário para a altura do header */
     }
 
+
     .title {
         font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 72px;
+        font-size: 68px;
+        font-weight: 550;
         /* Fonte personalizada */
         color: rgb(0, 0, 0);
         /* Cor preta */
         margin-top: 10%;
         margin-left: 5%;
-        margin-bottom: 0;
-
     }
+
+
 
     .content-text {
         font-family: 'Aeonik-Regular', sans-serif;
-        font-size: 61px;
+        font-size: 63px;
+
         color: grey;
         /* Tamanho da fonte do texto */
         /* Cor do texto */
-        line-height: 1.4;
+        line-height: 1.2;
         /* Espaçamento entre linhas */
         margin-left: 5%;
+        margin-top: -4%!important;
     }
 
     .image-services {
@@ -124,10 +128,12 @@
     .service-title-container {
         font-family: 'Aeonik-Medium', sans-serif;
         font-size: 72px;
+        font-weight: 550;
         /* Fonte personalizada */
         color: rgb(0, 0, 0);
+
         /* Cor preta */
-        margin-top: 10%;
+        margin-top: 22%;
         margin-bottom: 0;
     }
 
@@ -141,8 +147,8 @@
     }
 
     hr {
-        margin-bottom: 7%;
-        margin-top: 10%;
+        margin-bottom: 5%;
+        margin-top: 5%;
         /* Margem superior */
         border: 0;
         /* Remove bordas padrão */
@@ -150,16 +156,6 @@
         /* Define uma borda superior visível */
         width: 100%;
         /* Garante que o <hr> ocupe toda a largura disponível */
-    }
-
-    .title {
-        font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 72px;
-        /* Fonte personalizada */
-        color: rgb(0, 0, 0);
-        /* Cor preta */
-        margin-top: 20%;
-        margin-left: 5%;
     }
 
     .service-item {
@@ -188,5 +184,75 @@
         line-height: 1.4;
         /* Espaçamento entre linhas */
         margin: 0;
+    }
+
+    @media (max-width: 768px) {
+
+        .title {
+            font-size: 36px;
+            font-weight: 550;
+            /* Fonte personalizada */
+            margin-top: 48%;
+            margin-bottom: -9%;
+            margin-left: 5%;
+        }
+
+
+        .content-text {
+            font-size: 25px;
+            line-height: 1.4;
+            margin-left: 5%;
+        }
+
+        .content-services br {
+            display: none;
+            /* Oculta as tags <br> */
+        }
+
+        .service-title-container {
+            font-size: 30px;
+            font-weight: 600;
+            /* Fonte personalizada */
+            margin-top: 50%;
+            margin-bottom: 0;
+        }
+
+        hr {
+            margin-bottom: 7%;
+            margin-top: 15%;
+            /* Margem superior */
+            border: 0;
+            /* Remove bordas padrão */
+            border-top: 2px solid;
+            /* Define uma borda superior visível */
+            width: 100%;
+            /* Garante que o <hr> ocupe toda a largura disponível */
+        }
+
+
+
+        .service-item {
+            flex-direction: column;
+            /* Alinha o título e o texto em coluna */
+            align-items: flex-start;
+            /* Alinha os itens à esquerda */
+            gap: 10px;
+            /* Espaçamento entre o título e o texto */
+        }
+
+        .title-services {
+            width: 100%;
+            /* Faz o título ocupar toda a largura */
+            font-size: 20px;
+            font-weight: 590;
+            /* Ajusta o tamanho da fonte para dispositivos pequenos */
+        }
+
+        .content-services {
+            width: 100%;
+            /* Faz o texto ocupar toda a largura */
+            font-size: 17px;
+            /* Ajusta o tamanho da fonte para dispositivos pequenos */
+        }
     }
 </style>

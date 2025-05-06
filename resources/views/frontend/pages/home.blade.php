@@ -9,7 +9,7 @@
         {!! $page->getTranslatedAttribute('title', $lang) !!}
     </div>
 </div>
-<div class="footer-wrapper">
+<div class="footer-wrapper ">
     @include('frontend.partials.footer', ['footerColor' => 'footer-white'])
 </div>
 @endsection
@@ -26,24 +26,140 @@
         flex-direction: column;
     }
 
+    /* Estilo base para desktop */
     .homepage-container {
         display: flex;
         justify-content: center;
         align-items: center;
         background-image: url("{{ asset('storage/' . $page->image_1) }}");
         background-size: cover;
-        /* Ajusta a imagem para cobrir a tela */
         background-position: center;
         background-repeat: no-repeat;
         width: 100vw;
-        /* height: 100vh; */
         height: 100vh;
-        /* Subtrai a altura do footer */
-        /* Subtrai a altura do header */
-        /* flex: 1 0 auto; */
-        flex: 1;
-        z-index: 1;
         position: relative;
+        z-index: 1;
+    }
+
+    .title-overlay {
+        position: absolute;
+        font-family: 'Aeonik-Medium', sans-serif;
+        font-size: 72px;
+        top: 55%;
+        left: 90px;
+        transform: translateY(-50%);
+        color: rgb(255, 255, 255);
+        z-index: 2;
+        opacity: 0;
+        animation: fadeIn 3s forwards;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            "top top top"
+            "left center right"
+            "bottom bottom bottom";
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        margin-top: 0;
+    }
+
+    /* Responsividade para tablets */
+    @media (max-width: 1024px) {
+        .homepage-container {
+            background-image: url("{{ asset('storage/' . $page->image_1_mobile) }}");
+            /* Imagem específica para mobile */
+
+        }
+
+        .title-overlay {
+            font-size: 48px;
+            left: 30px;
+        }
+
+        .grid-container {
+            grid-template-areas:
+                "top"
+                "center"
+                "bottom";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+        }
+    }
+
+    /* Responsividade para smartphones */
+    @media (max-width: 768px) {
+        .homepage-container {
+            background-image: url("{{ asset('storage/' . $page->image_1_mobile) }}");
+            /* Imagem específica para mobile */
+        }
+
+        .title-overlay {
+            font-size: 10vw;
+            left: 20px;
+            top: 60%;
+        }
+
+        .grid-container {
+            grid-template-areas:
+                "center"
+                "bottom";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+        }
+
+        .footer-wrapper {
+            width: 110%;
+            /* Torna o footer um pouco mais largo */
+            left: -5%;
+            /* Centraliza o footer ao expandir a largura */
+        }
+
+        footer {
+            padding: 10vh 0;
+            /* Ajusta o espaçamento vertical */
+        }
+
+        .footer-line {
+            width: calc(100% - 10vh);
+            /* Ajusta a largura da linha no footer */
+        }
+
+        .footer-text {
+            margin-left: 5vh;
+            /* Ajusta o alinhamento do texto */
+        }
+    }
+
+    /* Responsividade para telas muito pequenas */
+    @media (max-width: 480px) {
+        .homepage-container {
+            background-size: cover;
+        }
+
+        .title-overlay {
+            font-size: 10vw;
+            left: 5%;
+            top: 60%;
+        }
+
+        .grid-container {
+            grid-template-areas:
+                "center";
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+    }
+
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
     }
 
     .footer-wrapper {
@@ -76,94 +192,5 @@
         margin-left: 9vh;
         margin-top: 5px;
         color: white;
-    }
-
-    .title-overlay {
-        position: absolute;
-        font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 72px;
-        top: 50%;
-        left: 50px;
-        transform: translateY(-50%);
-        color: rgb(255, 255, 255);
-        z-index: 2;
-        opacity: 0;
-        animation: fadeIn 3s forwards;
-    }
-
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
-        }
-    }
-
-    .grid-container {
-        display: grid;
-        grid-template-areas:
-            "top top top"
-            "left center right"
-            "bottom bottom bottom";
-        grid-template-columns: 1fr auto 1fr;
-        grid-template-rows: 1fr auto 1fr;
-        width: 100vw;
-        height: 100vh;
-        /* Subtrai a altura do header */
-        position: relative;
-        margin-top: 0;
-    }
-
-    /* Responsividade para tablets */
-    @media (max-width: 1024px) {
-        .homepage-container {
-            background-size: cover;
-        }
-
-        .title-overlay {
-            font-size: 48px;
-            left: 30px;
-        }
-
-        .grid-container {
-            margin-top: 0;
-        }
-    }
-
-    /* Responsividade para smartphones */
-    @media (max-width: 768px) {
-        .homepage-container {
-            background-size: cover;
-        }
-
-        .title-overlay {
-            font-family: 'Aeonik-Medium', sans-serif;
-            /* Fonte Aeonik-Medium */
-            font-size: 110px;
-            /* Tamanho de fonte maior */
-            left: 20px;
-        }
-
-        .grid-container {
-            margin-top: 0;
-        }
-    }
-
-    /* Responsividade para telas muito pequenas */
-    @media (max-width: 480px) {
-        .homepage-container {
-            background-size: cover;
-        }
-
-        .title-overlay {
-            font-family: 'Aeonik-Medium', sans-serif;
-            /* Fonte Aeonik-Medium */
-            font-size: 40px;
-            /* Tamanho de fonte maior */
-            left: 10px;
-
-        }
-
-        .grid-container {
-            margin-top: 0;
-        }
     }
 </style>
