@@ -17,12 +17,11 @@ RUN apt-get update && apt-get install -y \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd 
-  
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
 
 # Definir a raiz do Apache para a pasta public
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
@@ -35,24 +34,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copiar arquivos do Laravel para o contêiner
 COPY . /var/www/html
 
-# Instalar dependências do Laravel
-RUN composer install --no-dev --optimize-autoloader
-
-# Executar comandos do Artisan
-
-RUN composer install --no-dev --optimize-autoloader \
- && php artisan config:clear \
- && php artisan view:clear \
- && php artisan route:clear \
- && php artisan storage:link \
- && php artisan config:cache \
- && chmod -R 775 storage bootstrap/cache \
- && chown -R www-data:www-data storage bootstrap/cache
-    
 # Ajustar permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
-
 
     # Habilitar mod_rewrite no Apache
 RUN a2enmod rewrite
