@@ -5,7 +5,7 @@
     <div class="title">
         {{$page->getTranslatedAttribute('title', $lang)}}
     </div>
-    
+
     <div class="content fade-in hideme excerpt">
         {!! $page->getTranslatedAttribute('excerpt', $lang) !!}
     </div>
@@ -65,7 +65,15 @@
 
     }
 
+    .excerpt {
+        margin-bottom: -2px;
+        /* Reduza o espaçamento inferior */
+    }
 
+    .body-about {
+        margin-top: -2px !important;
+        /* Reduza o espaçamento superior */
+    }
 
     .hideme {
         opacity: 0;
@@ -87,6 +95,7 @@
     }
 
     .content2 {
+        margin-top: -2%;
         color: rgba(62, 62, 62, 0.55);
     }
 
@@ -127,7 +136,7 @@
         /* Garante que a nova imagem fique sobre a principal */
     }
 
- 
+
 
     @media (max-width: 768px) {}
 
@@ -140,7 +149,8 @@
 
         .content {
             display: flex;
-            flex-wrap: wrap; /* 👈 super importante */
+            flex-wrap: wrap;
+            /* 👈 super importante */
             font-size: 22px;
             /* Ajuste o tamanho da fonte para telas menores */
             /* Margem à esquerda */
