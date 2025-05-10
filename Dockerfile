@@ -38,15 +38,22 @@ COPY . /var/www/html
 RUN composer install --no-dev --optimize-autoloader
 
 # Executar comandos do Artisan
-RUN php artisan config:clear \
-    && php artisan route:clear \
-    && php artisan view:clear \
-    && php artisan storage:link \
-    && php artisan config:cache
+
+RUN composer install --no-dev --optimize-autoloader \
+ && php artisan key:generate --force \
+ && php artisan config:clear \
+ && php artisan view:clear \
+ && php artisan route:clear \
+ && php artisan storage:link \
+ && php artisan config:cache \
+ && chmod -R 775 storage bootstrap/cache \
+ && chown -R www-data:www-data storage bootstrap/cache
     
 # Ajustar permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
+
+CMD php artisan serve --host=0.0.0.0 --port=8000
 
     # Habilitar mod_rewrite no Apache
 RUN a2enmod rewrite
