@@ -17,13 +17,8 @@ RUN apt-get update && apt-get install -y \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
-    && composer install --no-dev --optimize-autoloader \
-    && php artisan config:clear \
-    && php artisan route:clear \
-    && php artisan view:clear \
-    && php artisan storage:link \
-    && php artisan config:cache
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd 
+  
 
 # Definir a raiz do Apache para a pasta public
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
@@ -39,6 +34,16 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copiar arquivos do Laravel para o contêiner
 COPY . /var/www/html
 
+# Instalar dependências do Laravel
+RUN composer install --no-dev --optimize-autoloader
+
+# Executar comandos do Artisan
+RUN php artisan config:clear \
+    && php artisan route:clear \
+    && php artisan view:clear \
+    && php artisan storage:link \
+    && php artisan config:cache
+    
 # Ajustar permissões
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
