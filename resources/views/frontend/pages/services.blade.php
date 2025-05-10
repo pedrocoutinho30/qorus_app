@@ -58,7 +58,7 @@
     .white-bar {
 
         /* Ocupa toda a largura */
-        height: 100px;
+        height: 210px;
         /* Altura da barra branca */
         background-color: #ffffff;
         /* Cor branca */
@@ -120,7 +120,7 @@
     }
 
     .image-services.imagem-2 {
-        margin-top: 30%;
+        margin-top: 20%;
         margin-bottom: 0;
         /* Espaçamento entre a imagem e o conteúdo */
     }
@@ -156,7 +156,7 @@
 
     hr {
         margin-bottom: 2%;
-        margin-top: 10%;
+        margin-top: 6%;
         /* Margem superior */
         border: 0;
         /* Remove bordas padrão */
@@ -173,7 +173,7 @@
         /* Fonte personalizada */
         color: rgb(0, 0, 0);
         /* Cor preta */
-        margin-top: 20%;
+        margin-top: 25%;
         margin-left: 5%;
 
     }
@@ -186,13 +186,13 @@
         /* Alinha o título e o texto verticalmente */
         margin-bottom: 20px;
         /* Espaçamento entre os itens */
-        gap: 20%;
+        gap: 10%;
         /* Define um espaçamento fixo entre o título e o texto */
     }
 
     .title-services {
         font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 38px;
+        font-size: 42px;
         font-weight: 550;
         width: 20%;
         margin-top: 2%;
@@ -202,7 +202,7 @@
    
     .content-services {
         font-family: 'Aeonik-Regular', sans-serif;
-        font-size: 30px;
+        font-size: 34px;
         /* Tamanho da fonte do texto */
         /* Cor do texto */
         line-height: 1.4;
