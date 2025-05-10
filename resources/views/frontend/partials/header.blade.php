@@ -95,7 +95,7 @@
         background-color: rgb(248, 244, 238);
         /* Cor de fundo para combinar com o menu */
         font-size: 14px;
-        color: grey;
+        color: #cacbcd;
         font-family: 'Aeonik-Medium', sans-serif;
     }
 
@@ -160,7 +160,8 @@
     }
 
     .lang-items {
-        color: grey !important;
+        color: #cacbcd !important;
+        font-weight: 600;
         text-decoration: none;
         font-family: 'Aeonik-Medium', sans-serif;
         font-size: 15px;
@@ -186,12 +187,12 @@
     }
 
     .lang-link {
-        color: grey !important;
+        color: #cacbcd !important;
         text-decoration: none;
     }
 
     .lang-link:visited {
-        color: grey !important;
+        color: #cacbcd !important;
         /* Garante que a cor permaneça cinza após o clique */
         text-decoration: none;
 
@@ -199,14 +200,14 @@
     }
 
     .lang-link:hover {
-        color: grey;
+        color: #cacbcd;
         /* Mantém a cor cinza ao passar o mouse */
         text-decoration: underline;
         /* Opcional: adiciona sublinhado ao passar o mouse */
     }
 
     .lang-link:active {
-        color: grey !important;
+        color: #cacbcd !important;
         /* Garante que a cor permaneça cinza no estado ativo */
     }
 
