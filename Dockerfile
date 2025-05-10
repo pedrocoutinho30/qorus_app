@@ -17,8 +17,13 @@ RUN apt-get update && apt-get install -y \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && composer install --no-dev --optimize-autoloader \
+    && php artisan config:clear \
+    && php artisan route:clear \
+    && php artisan view:clear \
+    && php artisan storage:link \
+    && php artisan config:cache
 
 # Definir a raiz do Apache para a pasta public
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
