@@ -40,7 +40,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Executar comandos do Artisan
 
 RUN composer install --no-dev --optimize-autoloader \
- && php artisan key:generate --force \
  && php artisan config:clear \
  && php artisan view:clear \
  && php artisan route:clear \
