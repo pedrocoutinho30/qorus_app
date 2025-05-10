@@ -9,9 +9,13 @@
                 class="menu-link {{ Request::is($lang . '/' . ltrim($menu->getTranslatedAttribute('slug', $lang), '/')) ? 'active' : '' }}">
                 <div class="menu-content">
                     @if($menu->getTranslatedAttribute('title', $lang) == 'Entre em contacto connosco!')
-                    <div class="menu-title">@if($lang == 'pt') Contatos @else Contacts @endif</div>
-
+                    <div class="menu-title"> Contatos </div>
+                    @elseif($menu->getTranslatedAttribute('title', $lang) == 'Get in touch with us!')
+                    <div class="menu-title">  Contacts </div>
                     @else
+
+
+
                     <div class="menu-title">{{$menu->getTranslatedAttribute('title', $lang)}} </div>
                     @endif
                 </div>

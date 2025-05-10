@@ -23,7 +23,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        margin-top: 5vh;
+        margin-top: 2vh;
         background-color: rgb(28, 28, 28);
     }
 
@@ -57,10 +57,11 @@
         /* Remove a barra de rolagem vertical */
         resize: none;
         /* Impede o redimensionamento manual */
+        /* Aumenta o numero de linhas para o textarea */
     }
 
     textarea {
-        min-height: 100px;
+        min-height: 250px;
         resize: none;
         max-height: 250px;
 
@@ -113,7 +114,7 @@
         font-size: 16px;
         cursor: pointer;
         border-radius: 20px;
-        margin: 20px auto;
+        margin: 20% auto;
         /* Centraliza o botão horizontalmente */
         display: block;
         /* Garante que o botão seja tratado como um bloco */

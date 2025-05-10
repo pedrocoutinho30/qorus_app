@@ -194,7 +194,7 @@
         font-family: 'Aeonik-Medium', sans-serif;
         font-size: 42px;
         font-weight: 550;
-        width: 20%;
+        width: 500px;
         margin-top: 2%;
 
     }

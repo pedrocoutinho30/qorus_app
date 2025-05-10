@@ -92,7 +92,7 @@
         line-height: 1.2;
         /* Espaçamento entre linhas */
         margin-left: 5%;
-        margin-top: -4%!important;
+        margin-top: -4% !important;
     }
 
     .image-services {
@@ -163,22 +163,26 @@
         align-items: center;
         /* Alinha o título e o texto verticalmente */
         margin-bottom: 20px;
+        margin-top: -25px !important;
         /* Espaçamento entre os itens */
-        gap: 20%;
+        gap: 22%;
         /* Define um espaçamento fixo entre o título e o texto */
     }
 
     .title-services {
         font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 40px;
+        font-size: 42px;
+        font-weight: 550;
         /* Tamanho da fonte do título */
-        margin: 0;
-        width: 200px;
+        margin-top: -3%;
+        width: 23%;
+        white-space: nowrap;
+        /* Impede que o texto quebre em várias linhas */
     }
 
     .content-services {
         font-family: 'Aeonik-Regular', sans-serif;
-        font-size: 30px;
+        font-size: 34px;
         /* Tamanho da fonte do texto */
         /* Cor do texto */
         line-height: 1.4;
