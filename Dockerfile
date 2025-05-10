@@ -53,7 +53,6 @@ RUN composer install --no-dev --optimize-autoloader \
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage /var/www/html/bootstrap/cache
 
-CMD php artisan serve --host=0.0.0.0 --port=8000
 
     # Habilitar mod_rewrite no Apache
 RUN a2enmod rewrite
