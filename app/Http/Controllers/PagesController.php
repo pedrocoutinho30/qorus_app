@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\TextCard;
-use TCG\Voyager\Facades\Voyager;
 
 class PagesController extends Controller
 {
