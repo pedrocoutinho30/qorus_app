@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 class TextCard extends Model
 {
+    
     use HasFactory;
     use Translatable;
 

@@ -83,6 +83,7 @@
 
     .image-contacts-up {
         position: absolute;
+        font-weight: 1600;
         /* Permite posicionar a imagem em relação ao contêiner pai */
         top: 20%;
         /* Ajuste para posicionar acima da linha do título */
