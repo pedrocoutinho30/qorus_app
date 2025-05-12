@@ -11,11 +11,8 @@
                     @if($menu->getTranslatedAttribute('title', $lang) == 'Entre em contacto connosco!')
                     <div class="menu-title"> Contatos </div>
                     @elseif($menu->getTranslatedAttribute('title', $lang) == 'Get in touch with us!')
-                    <div class="menu-title">  Contacts </div>
+                    <div class="menu-title"> Contacts </div>
                     @else
-
-
-
                     <div class="menu-title">{{$menu->getTranslatedAttribute('title', $lang)}} </div>
                     @endif
                 </div>
@@ -306,7 +303,7 @@
         font-size: 48px;
         cursor: pointer;
         position: absolute;
-        top: 4px;
+        top: 2px !important;
         right: 20px;
         z-index: 1100;
         /* Garante que o botão "X" fique acima do menu */
@@ -380,12 +377,12 @@
         left: 0;
         bottom: -2px;
         /* Ajuste a posição da linha */
-        width: 0;
+        /* width: 0;
         height: 2px;
         /* Espessura da linha */
         background-color: black;
         /* Cor da linha */
-        transition: width 0.3s ease;
+        transition: width 0.3s ease; */
         /* Animação suave */
     }
 
@@ -438,6 +435,8 @@
         .header-section.menu {
             display: none;
         }
+
+        
     }
 </style>
 
