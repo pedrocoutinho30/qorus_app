@@ -11,7 +11,7 @@
     </div>
     <div class="image-services">
         <img src="{{asset('storage/'.$page->image_1)}}" alt="">
-        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image-top">
+        <img src="{{ asset('img/Foguetao_Pagina04.svg') }}" alt="Foguetão" class="overlay-image-top">
     </div>
 
 

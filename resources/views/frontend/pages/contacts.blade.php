@@ -19,7 +19,7 @@
 <div class="container-conctacts">
     <!-- colocar imagem à direita -->
     <div class="image-contacts-up">
-        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image-top">
+        <img src="{{ asset('img/Foguetao_Pagina05.svg') }}" alt="Foguetão" class="overlay-image-top">
     </div>
     <div class="title-contacts">
         {!!$page->getTranslatedAttribute('body', $lang)!!}

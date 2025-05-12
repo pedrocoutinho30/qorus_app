@@ -5,7 +5,7 @@
     <div class="image-services ">
         <img src="{{ asset('storage/' . $page->image_1) }}" alt="Imagem Desktop" class="image-desktop">
         <img src="{{ asset('storage/' . $page->image_1_mobile) }}" alt="Imagem Mobile" class="image-mobile">
-        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image-top">
+        <img src="{{ asset('img/Foguetao_Pagina03_01.svg') }}" alt="Foguetão" class="overlay-image-top">
     </div>
     <!-- Barra branca -->
     <div class="white-bar"></div>
@@ -31,7 +31,7 @@
     <div class="image-services imagem-2">
         <img src="{{ asset('storage/' . $page->image_2) }}" alt="Imagem Desktop" class="image-desktop">
         <img src="{{ asset('storage/' . $page->image_2_mobile) }}" alt="Imagem Mobile" class="image-mobile">
-        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image-bottom">
+        <img src="{{ asset('img/Foguetao_Pagina03_02.svg') }}" alt="Foguetão" class="overlay-image-bottom">
     </div>
 </div>
 
