@@ -126,11 +126,13 @@
     }
 
     /* Ajustes para dispositivos menores */
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
 
         .form-container {
-            height: 55vh;
+            height: 100vh;
+        margin-top: 2vh;
         }
+        
 
         .buttonSubmit {
             width: 30%;
