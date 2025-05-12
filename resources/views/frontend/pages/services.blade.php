@@ -21,7 +21,7 @@
             <div class="title-services">
                 {!! $otherText->getTranslatedAttribute('title', $lang) !!}
             </div>
-            
+
             <div class="content-services">
                 {!! $otherText->getTranslatedAttribute('text', $lang) !!}
             </div>
@@ -127,7 +127,7 @@
 
     .overlay-image-bottom {
         position: absolute;
-        top: 30%;
+        top: 23%;
         /* Move a imagem para metade da altura do container */
         left: 6%;
         /* Alinha a imagem ao lado direito */
@@ -199,7 +199,7 @@
 
     }
 
-   
+
     .content-services {
         font-family: 'Aeonik-Regular', sans-serif;
         font-size: 34px;
@@ -224,11 +224,11 @@
     }
 
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
 
         /* Barra branca */
         .white-bar {
-            height: 70px;
+            height: 63px;
         }
 
         .title {
@@ -319,7 +319,7 @@
         }
 
         .image-mobile {
-            margin-top: -1%;
+            margin-top: -3%;
             display: block !important;
             /* Exibe as imagens mobile em dispositivos pequenos */
         }

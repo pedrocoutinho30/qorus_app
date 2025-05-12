@@ -306,7 +306,7 @@
         font-size: 48px;
         cursor: pointer;
         position: absolute;
-        top: 10px;
+        top: 4px;
         right: 20px;
         z-index: 1100;
         /* Garante que o botão "X" fique acima do menu */

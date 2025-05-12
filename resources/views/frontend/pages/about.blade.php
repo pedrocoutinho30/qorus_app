@@ -138,7 +138,6 @@
 
 
 
-    @media (max-width: 768px) {}
 
     @media (max-width: 480px) {
         .title {
@@ -165,7 +164,7 @@
         }
 
         .body-about {
-            margin-top: 8%;
+            margin-top: 8% !important;
         }
 
 
