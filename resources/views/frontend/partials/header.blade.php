@@ -422,11 +422,11 @@
 
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
 
         header {
-            min-height: 6vh;
-            max-height: 6vh;
+            min-height: 8vh;
+            max-height: 8vh;
         }
 
         .logo img {
