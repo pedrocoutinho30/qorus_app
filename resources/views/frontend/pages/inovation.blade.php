@@ -190,13 +190,13 @@
         margin: 0;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 480px) {
 
         .title {
             font-size: 36px;
             font-weight: 550;
             /* Fonte personalizada */
-            margin-top: 48%;
+            margin-top: 30%;
             margin-bottom: -9%;
             margin-left: 5%;
         }
@@ -206,6 +206,7 @@
             font-size: 25px;
             line-height: 1.4;
             margin-left: 5%;
+            margin-top: 4% !important;
         }
 
         .content-services br {
@@ -222,7 +223,7 @@
         }
 
         hr {
-            margin-bottom: 7%;
+            margin-bottom: 12%;
             margin-top: 15%;
             /* Margem superior */
             border: 0;
