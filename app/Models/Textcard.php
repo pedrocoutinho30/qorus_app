@@ -10,5 +10,7 @@ class TextCard extends Model
     use HasFactory;
     use Translatable;
 
+    protected $table = 'textcards';
+
     protected $translatable = ['title', 'text'];
 }
