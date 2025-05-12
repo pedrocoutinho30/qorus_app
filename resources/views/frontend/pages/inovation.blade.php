@@ -223,8 +223,8 @@
         }
 
         hr {
-            margin-bottom: 12%;
-            margin-top: 15%;
+            margin-bottom: 18%;
+            margin-top: 9%;
             /* Margem superior */
             border: 0;
             /* Remove bordas padrão */
