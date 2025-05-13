@@ -105,6 +105,10 @@
         /* Aumenta a transparência */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         /* Adiciona uma sombra ao rolar */
+        backdrop-filter: blur(7px);
+        /* Adiciona o desfoque ao conteúdo por trás */
+        -webkit-backdrop-filter: blur(7px);
+        /* Suporte para navegadores baseados em WebKit */
     }
 
     header.scrolled .hamburger-menu,
@@ -383,7 +387,8 @@
         /* Espessura da linha */
         background-color: black;
         /* Cor da linha */
-        transition: width 0.3s ease; */
+        transition: width 0.3s ease;
+        */
         /* Animação suave */
     }
 
@@ -437,7 +442,7 @@
             display: none;
         }
 
-        
+
     }
 </style>
 
