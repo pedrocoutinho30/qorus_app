@@ -121,21 +121,21 @@
 
     .overlay-image {
         position: absolute;
-        /* Posiciona a nova imagem sobre a principal */
-        bottom: -100px;
-        /* Ajusta a posição vertical para ficar um pouco abaixo */
+        bottom: 450px;
+        /* Começa mais acima */
         left: 60%;
-        /* Centraliza horizontalmente */
         transform: translateX(-50%);
-        /* Ajusta a centralização */
         width: 50%;
-        /* Define a largura da nova imagem (ajuste conforme necessário) */
         height: auto;
-        /* Mantém a proporção da nova imagem */
         z-index: 1;
-        /* Garante que a nova imagem fique sobre a principal */
+        transition: bottom 3s ease-in-out;
+        /* Transição suave para a posição final */
     }
 
+    .overlay-image.scrolled {
+        bottom: -100px;
+        /* Posição final ao rolar */
+    }
 
 
 
@@ -166,7 +166,6 @@
         .body-about {
             margin-top: 8% !important;
         }
-
 
         .overlay-image {
             bottom: -14%;
@@ -215,5 +214,20 @@
             const plainTextBody = bodyElement.innerHTML.replace(/<\/?[^>]+(>|$)/g, ""); // Remove tags HTML
             bodyElement.textContent = plainTextBody; // Define o texto puro no elemento
         }
+    });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const overlayImage = document.querySelector('.overlay-image');
+
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.scrollY;
+
+            // Adiciona a classe 'scrolled' quando o usuário rolar
+            if (scrollPosition > 50) { // Ajuste o valor conforme necessário
+                overlayImage.classList.add('scrolled');
+            } else {
+                overlayImage.classList.remove('scrolled');
+            }
+        });
     });
 </script>
