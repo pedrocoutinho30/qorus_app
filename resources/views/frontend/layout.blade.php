@@ -27,11 +27,13 @@
     <style>
         html,
         body {
+            
             height: 100%;
             margin: 0;
             padding: 0;
             /* font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Arial, sans-serif; */
             font-weight: 400;
+            letter-spacing: 0.7px;
             /* Fallback para serif caso não exista */
             color: #333;
             display: flex;

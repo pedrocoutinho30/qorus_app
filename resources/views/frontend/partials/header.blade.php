@@ -64,6 +64,7 @@
 
 <style>
     header {
+        
         background-color: white;
         /* Transparente no início */
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
