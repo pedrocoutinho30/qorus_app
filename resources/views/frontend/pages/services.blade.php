@@ -105,19 +105,22 @@
 
     .overlay-image-top {
         position: absolute;
-        /* Posiciona a imagem em relação ao container pai */
-        top: 110%;
-        /* Move a imagem para metade da altura do container */
+        top: 100%;
+        /* Começa mais acima */
         right: 8%;
-        /* Alinha a imagem ao lado direito */
         transform: translateY(-50%);
-        /* Centraliza verticalmente */
         width: 45% !important;
-        /* Faz a imagem ocupar metade da largura da tela */
-        /* Mantém a proporção da imagem */
         z-index: 1;
-        /* Garante que a imagem fique sobre a principal */
+        transition: top 2s ease-in-out;
+        /* Transição suave para a posição final */
     }
+
+    .overlay-image-top.scrolled {
+        top: 108%;
+        /* Posição final ao rolar */
+    }
+
+
 
     .image-services.imagem-2 {
         margin-top: 20%;
@@ -127,18 +130,20 @@
 
     .overlay-image-bottom {
         position: absolute;
-        top: 23%;
-        /* Move a imagem para metade da altura do container */
+        top: 10%;
+        /* Começa mais acima */
         left: 6%;
-        /* Alinha a imagem ao lado direito */
         transform: translateY(-50%);
-        /* Centraliza verticalmente */
         width: 45% !important;
-        /* Faz a imagem ocupar metade da largura da tela */
-        /* Mantém a proporção da imagem */
         z-index: 1;
+        transition: top 2s ease-in-out;
+        /* Transição suave para a posição final */
     }
 
+    .overlay-image-bottom.scrolled {
+        top: 23%;
+        /* Posição final ao rolar */
+    }
 
     .image-services img {
         width: 100%;
@@ -304,30 +309,34 @@
 
         .overlay-image-top {
             position: absolute;
-            /* Posiciona a imagem em relação ao container pai */
-            top: 117%;
-            /* Move a imagem para metade da altura do container */
-            right: 8%;
-            /* Alinha a imagem ao lado direito */
+            top: 110%;
+            /* Posição inicial no mobile */
+            right: 5%;
+            /* Ajuste para dispositivos menores */
             transform: translateY(-50%);
-            /* Centraliza verticalmente */
-            width: 45% !important;
-            /* Faz a imagem ocupar metade da largura da tela */
-            /* Mantém a proporção da imagem */
+            width: 60% !important;
+            /* Ajuste o tamanho para telas menores */
             z-index: 1;
-            /* Garante que a imagem fique sobre a principal */
+            transition: top 2s ease-in-out;
+            /* Transição suave */
         }
 
-        .image-mobile {
-            margin-top: -3%;
-            display: block !important;
-            /* Exibe as imagens mobile em dispositivos pequenos */
+        .overlay-image-top.scrolled {
+            top: 128%;
+            /* Posição final ao rolar no mobile */
         }
+    }
 
-        .image-desktop {
-            display: none !important;
-            /* Oculta as imagens desktop em dispositivos pequenos */
-        }
+    .image-mobile {
+        margin-top: -3%;
+        display: block !important;
+        /* Exibe as imagens mobile em dispositivos pequenos */
+    }
+
+    .image-desktop {
+        display: none !important;
+        /* Oculta as imagens desktop em dispositivos pequenos */
+    }
     }
 </style>
 
@@ -357,5 +366,37 @@
 
         });
 
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlayImageBottom = document.querySelector('.overlay-image-bottom');
+
+        window.addEventListener('scroll', function() {
+            const imagePosition = overlayImageBottom.getBoundingClientRect().top; // Posição da imagem em relação à janela
+            const windowHeight = window.innerHeight; // Altura da janela
+
+            // Verifica se a imagem está visível na janela
+            if (imagePosition <= windowHeight) {
+                overlayImageBottom.classList.add('scrolled'); // Adiciona a classe quando visível
+            } else {
+                overlayImageBottom.classList.remove('scrolled'); // Remove a classe quando não visível
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlayImageTop = document.querySelector('.overlay-image-top');
+
+        window.addEventListener('scroll', function() {
+            const imagePosition = overlayImageTop.getBoundingClientRect().top; // Posição da imagem em relação à janela
+            const windowHeight = window.innerHeight; // Altura da janela
+
+            // Verifica se a imagem está visível na janela
+            if (imagePosition <= windowHeight) {
+                overlayImageTop.classList.add('scrolled'); // Adiciona a classe quando visível
+            } else {
+                overlayImageTop.classList.remove('scrolled'); // Remove a classe quando não visível
+            }
+        });
     });
 </script>
