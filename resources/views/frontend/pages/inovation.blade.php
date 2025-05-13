@@ -166,6 +166,7 @@
         margin-top: -25px !important;
         /* Espaçamento entre os itens */
         gap: 22%;
+         color: rgb(0, 0, 0);
         /* Define um espaçamento fixo entre o título e o texto */
     }
 
@@ -177,6 +178,7 @@
         margin-top: -3%;
         width: 23%;
         white-space: nowrap;
+         color: rgb(0, 0, 0);
         /* Impede que o texto quebre em várias linhas */
     }
 
@@ -188,6 +190,7 @@
         line-height: 1.4;
         /* Espaçamento entre linhas */
         margin: 0;
+         color: rgb(0, 0, 0);
     }
 
     @media (max-width: 480px) {
@@ -233,8 +236,6 @@
             width: 100%;
             /* Garante que o <hr> ocupe toda a largura disponível */
         }
-
-
 
         .service-item {
             flex-direction: column;
