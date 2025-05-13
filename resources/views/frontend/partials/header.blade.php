@@ -172,6 +172,7 @@
     .menu-link:visited {
         color: black;
         text-decoration: none;
+        bottom: -3px;
         /* Garante que a cor não mude após o clique */
     }
 
@@ -180,7 +181,7 @@
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -3px;
         width: 100%;
         height: 2px;
         background-color: black;
@@ -216,7 +217,7 @@
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -3px;
         width: 0;
         height: 2px;
         /* Espessura do sublinhado */
