@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="header-section-mobile menu-mobile">
+        <div class="header-section-mobile ">
             <button id="hamburger-menu" class="hamburger-menu">
                 ☰
             </button>
@@ -273,16 +273,19 @@
         transition: top 0.8s ease-in-out;
         padding-left: 20px;
         /* Transição suave para o movimento */
-
     }
 
     .mobile-menu.visible {
         top: 8vh;
+        transform: translateY(0); /* Exibe o menu */
+
         /* Alinha o menu logo abaixo do header */
     }
 
     .mobile-menu.hidden {
         top: -200%;
+            transform: translateY(0); /* Exibe o menu */
+
         /* Sai da tela novamente */
     }
 
@@ -411,10 +414,6 @@
         width: 100%;
         /* Faz a linha aparecer da esquerda para a direita */
     }
-
-    @media (max-width: 1370px) {
-     
-    }
     @media (min-width: 769px) {
         .header-section-mobile {
             display: none;
@@ -463,10 +462,13 @@
                 hamburgerMenu.classList.remove('hidden');
                 closeMenu.classList.add('hidden');
             } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+               setTimeout(() => {
                 mobileMenu.classList.remove('hidden');
                 body.classList.add('no-scroll');
                 hamburgerMenu.classList.add('hidden');
                 closeMenu.classList.remove('hidden');
+            }, 300); // Tempo suficiente para o scroll suave
             }
         }
 
