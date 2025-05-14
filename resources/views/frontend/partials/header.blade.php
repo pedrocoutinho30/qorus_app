@@ -389,7 +389,7 @@
         background-color: black;
         /* Cor da linha */
         transition: width 0.3s ease;
-        */
+       
         /* Animação suave */
     }
 
@@ -412,7 +412,9 @@
         /* Faz a linha aparecer da esquerda para a direita */
     }
 
-
+    @media (max-width: 1370px) {
+     
+    }
     @media (min-width: 769px) {
         .header-section-mobile {
             display: none;
