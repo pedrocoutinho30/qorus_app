@@ -205,14 +205,20 @@
         .image-contacts-up {
             position: absolute;
             /* Permite posicionar a imagem em relação ao contêiner pai */
-            top: 15%;
+            top: 20%;
             /* Ajuste para posicionar acima da linha do título */
             right: 10%;
             /* Alinha a imagem à direita */
             width: 80px;
             /* Ajuste o tamanho da imagem conforme necessário */
             z-index: 1;
-            /* Garante que a imagem fique acima de outros elementos, se necessário */
+            transform: translateY(-50%);
+            transition: top 1.5s ease-in-out;
+        }
+
+        .image-contacts-up.scrolled {
+            top: 40%;
+            /* Posição final ao rolar */
         }
 
         .content-info-contacts {
@@ -289,7 +295,7 @@
         }
     });
 
-     document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const overlayImageTop = document.querySelector('.image-contacts-up');
 
         window.addEventListener('scroll', function() {

@@ -167,9 +167,25 @@
             margin-top: 8% !important;
         }
 
-        .overlay-image {
-            bottom: -14%;
-        }
+        
+
+         .overlay-image {
+        position: absolute;
+        bottom: 100px;
+        /* Começa mais acima */
+        left: 60%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: auto;
+        z-index: 1;
+        transition: bottom 3s ease-in-out;
+        /* Transição suave para a posição final */
+    }
+
+    .overlay-image.scrolled {
+        bottom: -20px;
+        /* Posição final ao rolar */
+    }
 
     }
 </style>
