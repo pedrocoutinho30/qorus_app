@@ -9,8 +9,8 @@
                 class="menu-link {{ Request::is($lang . '/' . ltrim($menu->getTranslatedAttribute('slug', $lang), '/')) ? 'active' : '' }}">
                 <div class="menu-content">
                     @if($menu->getTranslatedAttribute('title', $lang) == 'Entre em contacto connosco!')
-                    <div class="menu-title"> Contatos </div>
-                    @elseif($menu->getTranslatedAttribute('title', $lang) == 'Get in touch with us!')
+                    <div class="menu-title"> Contactos </div>
+                    @elseif($menu->getTranslatedAttribute('title', $lang) == 'Contact us!')
                     <div class="menu-title"> Contacts </div>
                     @else
                     <div class="menu-title">{{$menu->getTranslatedAttribute('title', $lang)}} </div>
@@ -282,7 +282,7 @@
     }
 
     .mobile-menu.hidden {
-        top: -100%;
+        top: -200%;
         /* Sai da tela novamente */
     }
 

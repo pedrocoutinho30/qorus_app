@@ -85,7 +85,7 @@
         position: absolute;
         font-weight: 1600;
         /* Permite posicionar a imagem em relação ao contêiner pai */
-        top: 20%;
+        top: 30%;
         /* Ajuste para posicionar acima da linha do título */
         right: 10%;
         /* Alinha a imagem à direita */
@@ -93,7 +93,15 @@
         /* Ajuste o tamanho da imagem conforme necessário */
         z-index: 1;
         /* Garante que a imagem fique acima de outros elementos, se necessário */
+        transform: translateY(-50%);
+        transition: top 1.5s ease-in-out;
     }
+
+    .image-contacts-up.scrolled {
+        top: 40%;
+        /* Posição final ao rolar */
+    }
+
 
     hr {
         margin-bottom: 4%;
@@ -279,5 +287,21 @@
                 setTimeout(() => successAlert.remove(), 500); // Remove o elemento após a transição
             }, 5000); // 5000ms = 5 segundos
         }
+    });
+
+     document.addEventListener('DOMContentLoaded', function() {
+        const overlayImageTop = document.querySelector('.image-contacts-up');
+
+        window.addEventListener('scroll', function() {
+            const imagePosition = overlayImageTop.getBoundingClientRect().top; // Posição da imagem em relação à janela
+            const windowHeight = window.innerHeight; // Altura da janela
+
+            // Verifica se a imagem está visível na janela
+            if (imagePosition <= windowHeight) {
+                overlayImageTop.classList.add('scrolled'); // Adiciona a classe quando visível
+            } else {
+                overlayImageTop.classList.remove('scrolled'); // Remove a classe quando não visível
+            }
+        });
     });
 </script>

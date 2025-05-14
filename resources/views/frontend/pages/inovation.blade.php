@@ -111,18 +111,22 @@
 
     .overlay-image-top {
         position: absolute;
-        /* Posiciona a imagem em relação ao container pai */
-        top: 110%;
-        /* Move a imagem para metade da altura do container */
+        top: 90%;
+        /* Posição inicial */
         right: 8%;
         /* Alinha a imagem ao lado direito */
         transform: translateY(-50%);
-        /* Centraliza verticalmente */
         width: 45% !important;
         /* Faz a imagem ocupar metade da largura da tela */
-        /* Mantém a proporção da imagem */
         z-index: 1;
         /* Garante que a imagem fique sobre a principal */
+        transition: top 1.5s ease-in-out;
+        /* Transição suave para a posição final */
+    }
+
+    .overlay-image-top.scrolled {
+        top: 110%;
+        /* Posição final ao rolar */
     }
 
     .service-title-container {
@@ -166,7 +170,7 @@
         margin-top: -25px !important;
         /* Espaçamento entre os itens */
         gap: 22%;
-         color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
         /* Define um espaçamento fixo entre o título e o texto */
     }
 
@@ -178,7 +182,7 @@
         margin-top: -3%;
         width: 23%;
         white-space: nowrap;
-         color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
         /* Impede que o texto quebre em várias linhas */
     }
 
@@ -190,7 +194,7 @@
         line-height: 1.4;
         /* Espaçamento entre linhas */
         margin: 0;
-         color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
     }
 
     @media (max-width: 480px) {
@@ -262,3 +266,21 @@
         }
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const overlayImageTop = document.querySelector('.overlay-image-top');
+
+        window.addEventListener('scroll', function() {
+            const imagePosition = overlayImageTop.getBoundingClientRect().top; // Posição da imagem em relação à janela
+            const windowHeight = window.innerHeight; // Altura da janela
+
+            // Verifica se a imagem está visível na janela
+            if (imagePosition <= windowHeight) {
+                overlayImageTop.classList.add('scrolled'); // Adiciona a classe quando visível
+            } else {
+                overlayImageTop.classList.remove('scrolled'); // Remove a classe quando não visível
+            }
+        });
+    });
+</script>
