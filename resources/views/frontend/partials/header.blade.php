@@ -64,7 +64,7 @@
 
 <style>
     header {
-        
+
         background-color: white;
         /* Transparente no início */
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -277,14 +277,16 @@
 
     .mobile-menu.visible {
         top: 8vh;
-        transform: translateY(0); /* Exibe o menu */
+        transform: translateY(0);
+        /* Exibe o menu */
 
         /* Alinha o menu logo abaixo do header */
     }
 
     .mobile-menu.hidden {
         top: -200%;
-            transform: translateY(0); /* Exibe o menu */
+        transform: translateY(0);
+        /* Exibe o menu */
 
         /* Sai da tela novamente */
     }
@@ -392,7 +394,7 @@
         background-color: black;
         /* Cor da linha */
         transition: width 0.3s ease;
-       
+
         /* Animação suave */
     }
 
@@ -414,6 +416,7 @@
         width: 100%;
         /* Faz a linha aparecer da esquerda para a direita */
     }
+
     @media (min-width: 769px) {
         .header-section-mobile {
             display: none;
@@ -446,6 +449,91 @@
 
 
     }
+
+    /* Desktop grande */
+    @media (max-width: 1440px) {
+        .header-section.menu {
+            margin-right: 5vh;
+        }
+
+        .menu-link {
+            font-size: 14px;
+            margin-right: 6vh;
+        }
+
+        .menu-title {
+            font-size: 15px;
+        }
+
+        .lang-items {
+            font-size: 14px;
+            margin-right: 3vh;
+        }
+
+        .lang-link {
+            font-size: 14px;
+        }
+    }
+
+    /* Laptop */
+    @media (max-width: 1280px) {
+        .header-section.menu {
+            margin-right: 2vh;
+        }
+
+        .menu-link {
+            font-size: 13px;
+            margin-right: 4vh;
+        }
+
+        .menu-title {
+            font-size: 13px;
+        }
+
+        .lang-items {
+            font-size: 13px;
+            margin-right: 2vh;
+        }
+
+        .lang-link {
+            font-size: 13px;
+        }
+    }
+
+    /* Tablet horizontal */
+    @media (max-width: 1024px) {
+        .header-section.menu {
+            margin-right: 0;
+        }
+
+        .menu-link {
+            font-size: 12px;
+            margin-right: 2vh;
+        }
+
+        .menu-title {
+            font-size: 12px;
+        }
+
+        .lang-items {
+            font-size: 12px;
+            margin-right: 1vh;
+        }
+
+        .lang-link {
+            font-size: 12px;
+        }
+    }
+
+    @media (max-width: 840px) {
+        .header-section.menu {
+            display: none !important;
+        }
+
+        .header-section-mobile {
+            display: flex !important;
+        }
+    }
 </style>
 
 <script>
@@ -462,13 +550,16 @@
                 hamburgerMenu.classList.remove('hidden');
                 closeMenu.classList.add('hidden');
             } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-               setTimeout(() => {
-                mobileMenu.classList.remove('hidden');
-                body.classList.add('no-scroll');
-                hamburgerMenu.classList.add('hidden');
-                closeMenu.classList.remove('hidden');
-            }, 300); // Tempo suficiente para o scroll suave
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                setTimeout(() => {
+                    mobileMenu.classList.remove('hidden');
+                    body.classList.add('no-scroll');
+                    hamburgerMenu.classList.add('hidden');
+                    closeMenu.classList.remove('hidden');
+                }, 300); // Tempo suficiente para o scroll suave
             }
         }
 
