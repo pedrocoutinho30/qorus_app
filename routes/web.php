@@ -41,6 +41,7 @@ Route::group(['prefix' => 'qorus-bo'], function () {
 //     // return view('video');
 // });
 
+
 Route::get('/', 'App\Http\Controllers\PagesController@index')->name('page.home.pt');
 
 Route::get('/en', 'App\Http\Controllers\PagesController@index')->name('page.home.en');

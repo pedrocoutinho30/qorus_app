@@ -1,5 +1,4 @@
 @extends('frontend.layout') <!-- Estendendo o layout principal -->
-
 @section('content')
 <div class="homepage-container">
     <div class="grid-container">

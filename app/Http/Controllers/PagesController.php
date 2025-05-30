@@ -13,6 +13,7 @@ class PagesController extends Controller
 
     public function index()
     {
+       
 
         //obter idioma do setLocale
         $lang = app()->getLocale();
@@ -29,6 +30,7 @@ class PagesController extends Controller
         }
 
         $page = Page::whereTranslation('slug', $slug)->firstOrFail();
+        
         return view('frontend.pages.home', compact('menus', 'lang', 'page'));
     }
     public function show($lang = 'pt', $slug = '')
