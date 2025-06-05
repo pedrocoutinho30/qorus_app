@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
     font-family: 'Aeonik';
     src: url('/fonts/Aeonik-Regular.ttf') format('truetype');
@@ -15,6 +19,18 @@
 @font-face {
     font-family: 'Aeonik-Medium';
     src: url('/fonts/Aeonik-Medium.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
+}
+
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 3s forwards;
 }

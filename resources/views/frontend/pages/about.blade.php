@@ -1,245 +1,62 @@
-@extends('frontend.layout') <!-- Estendendo o layout principal -->
+<div class="w-screen max-w-full bg-gradient-to-b from-[#f8f4ee] to-white">
+    <div class="flex flex-col justify-start space-y-6 pt-[80px]  ml-16 mr-16">
+        <div class="text-[42px] xs:text-[42px] sm:text-[42px] md:text-[42px] lg:text-[68px] xl:text-[68px] 2xl:text-[68px] font-medium text-black mt-[10%] md:block tracking-wide">
+            {{$page->getTranslatedAttribute('title', $lang)}}
+        </div>
+        {{-- Mobile: texto limpo, sem tags --}}
+        <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] mr-4 transition-opacity duration-[1500ms] ease-in-out fade-in excerpt text-black mt-[2%] tracking-normal">
+            {!! strip_tags($page->getTranslatedAttribute('excerpt', $lang)) !!}
+        </div>
 
-@section('content')
-<div class="container-about">
-    <div class="title">
-        {{$page->getTranslatedAttribute('title', $lang)}}
-    </div>
+        {{-- Desktop: conteúdo HTML --}}
+        <div class="hidden md:block text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px]  transition-opacity duration-[1500ms] ease-in-out fade-in excerpt text-black mt-[2%] tracking-wider">
+            {!! $page->getTranslatedAttribute('excerpt', $lang) !!}
+        </div>
 
-    <div class="content fade-in hideme excerpt">
-        {!! $page->getTranslatedAttribute('excerpt', $lang) !!}
-    </div>
-    <div class="content content2 fade-in hideme body-about">
-        {!! $page->getTranslatedAttribute('body', $lang) !!}
-    </div>
-    <div class="image image-right">
-        <img src="{{asset('storage/'.$page->image_1)}}" alt="">
-        <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão" class="overlay-image">
+        <div class="relative w-[100%] mx-auto mr-5 mb-[15vh] mt-12">
+            <img src="{{ asset('storage/' . $page->image_2) }}" alt="" class="w-full h-auto block">
+        </div>
+        {{-- Versão Mobile - texto sem tags HTML --}}
+        <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] mr-5 transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2 tracking-normal">
+            {!! strip_tags($page->getTranslatedAttribute('body', $lang)) !!}
+        </div>
+
+        {{-- Versão Desktop - texto com HTML --}}
+        <div class="hidden md:block text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2 tracking-wider">
+            {!! $page->getTranslatedAttribute('body', $lang) !!}
+        </div>
+
+        <div class="relative w-[90%] mt-12 mb-[10vh]">
+            <img src="{{ asset('storage/' . $page->image_1) }}" alt="" class="w-full h-auto block">
+            <img src="{{ asset('img/Foguetao_Pagina02.svg') }}" alt="Foguetão"
+                class="absolute ml-[10%] bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto z-[1] transition-all duration-[3000ms] ease-in-out overlay-image">
+        </div>
     </div>
 </div>
-<div class="footer-wrapper">
-
-    @include('frontend.partials.footer', ['footerColor' => 'footer-black'])
-</div>
-@endsection
-
-<style>
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(to bottom, rgb(248, 244, 238), #ffffff);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        overflow-x: hidden;
-        /* esconde qualquer conteúdo que passe para fora horizontalmente */
-        max-width: 100vw;
-        /* impede que ultrapasse a largura da viewport */
-        /* Bloqueia o scroll no início */
-    }
-
-    .container-about {
-        display: flex;
-        flex-direction: column;
-        /* Dispor os elementos em coluna */
-        justify-content: flex-start;
-        /* Alinhar os elementos ao início */
-        padding: 0;
-        justify-content: space-between;
-        padding-top: 100px;
-        width: 100vw;
-        max-width: 100%;
-        margin-top: 9vh;
-        margin-left: 5%;
-        /* Ajuste conforme necessário para a altura do header */
-    }
-
-    .title {
-        font-family: 'Aeonik-Medium', sans-serif;
-        font-size: 68px;
-        font-weight: 550;
-        /* Fonte personalizada */
-        color: rgb(0, 0, 0);
-        /* Cor preta */
-        margin-top: 10%;
-
-    }
-
-    .excerpt {
-        margin-bottom: -2px;
-        /* Reduza o espaçamento inferior */
-    }
-
-    .body-about {
-        margin-top: -2px !important;
-        /* Reduza o espaçamento superior */
-    }
-
-    .hideme {
-        opacity: 0;
-        transition: opacity 1.5s ease-in-out;
-    }
-
-    /* Estilo para quando o elemento fica visível */
-    .hideme.visible {
-        opacity: 1;
-    }
-
-    .content {
-        font-family: 'Aeonik-regular', sans-serif;
-        font-size: 41px;
-        color: rgb(0, 0, 0);
-        margin-top: 2%;
-        line-height: 1.2;
-
-    }
-
-    .content2 {
-        margin-top: -2%;
-        color: rgba(62, 62, 62, 0.55);
-    }
-
-    .image-right {
-        position: relative;
-        /* Define o container como relativo para posicionar a nova imagem */
-        width: 80%;
-        /* Largura total menos 20px (10px de margem em cada lado) */
-        margin-left: 20px;
-        margin-top: 10vh;
-        margin-bottom: 10vh;
-        /* Margem de 10px à direita e à esquerda */
-    }
-
-    .image-right img {
-        width: 100%;
-        /* Faz a imagem principal ocupar toda a largura do container pai */
-        height: auto;
-        /* Mantém a proporção da imagem */
-        display: block;
-        /* Remove o espaço em branco ao redor da imagem */
-    }
-
-    .overlay-image {
-        position: absolute;
-        bottom: 450px;
-        /* Começa mais acima */
-        left: 60%;
-        transform: translateX(-50%);
-        width: 50%;
-        height: auto;
-        z-index: 1;
-        transition: bottom 3s ease-in-out;
-        /* Transição suave para a posição final */
-    }
-
-    .overlay-image.scrolled {
-        bottom: -100px;
-        /* Posição final ao rolar */
-    }
 
 
-
-    @media (max-width: 480px) {
-        .title {
-            font-size: 36px;
-            margin-bottom: 15px;
-            /* Ajuste o tamanho da fonte para telas menores */
-        }
-
-        .content {
-            display: flex;
-            flex-wrap: wrap;
-            /* 👈 super importante */
-            font-size: 22px;
-            /* Ajuste o tamanho da fonte para telas menores */
-            /* Margem à esquerda */
-            margin-right: 2%;
-            /* 👇 evita que palavras muito grandes "estiquem" a janela */
-            word-break: break-word;
-            overflow-wrap: break-word;
-
-            /* 👇 impede overflow horizontal */
-            max-width: 100%;
-            line-height: 1.2;
-        }
-
-        .body-about {
-            margin-top: 8% !important;
-        }
-
-        
-
-         .overlay-image {
-        position: absolute;
-        bottom: 100px;
-        /* Começa mais acima */
-        left: 60%;
-        transform: translateX(-50%);
-        width: 50%;
-        height: auto;
-        z-index: 1;
-        transition: bottom 3s ease-in-out;
-        /* Transição suave para a posição final */
-    }
-
-    .overlay-image.scrolled {
-        bottom: -20px;
-        /* Posição final ao rolar */
-    }
-
-    }
-</style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
     $(document).ready(function() {
-        /* Every time the window is scrolled ... */
         $(window).scroll(function() {
-
-            /* Check the location of each desired element */
-            $('.hideme').each(function(i) {
-
+            $('.hideme').each(function() {
                 var bottom_of_object = $(this).position().top + $(this).outerHeight();
                 var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-                /* If the object is completely visible in the window, fade it in */
                 if (bottom_of_window > bottom_of_object) {
-
                     $(this).addClass('visible');
-
                 }
-
             });
-
         });
 
-        // Optional: fade in title on page load
         $('.title').fadeIn('slow');
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        const excerptElement = document.querySelector('.excerpt');
-        const bodyElement = document.querySelector('.body-about');
-
-        // Verifica se a largura da tela é menor ou igual a 768px
-        if (window.innerWidth <= 480) {
-            // Remove as tags HTML do conteúdo do excerpt
-            const plainText = excerptElement.innerHTML.replace(/<\/?[^>]+(>|$)/g, ""); // Remove tags HTML
-            excerptElement.textContent = plainText; // Define o texto puro no elemento
-
-            const plainTextBody = bodyElement.innerHTML.replace(/<\/?[^>]+(>|$)/g, ""); // Remove tags HTML
-            bodyElement.textContent = plainTextBody; // Define o texto puro no elemento
-        }
-    });
-
-      document.addEventListener('DOMContentLoaded', function () {
         const overlayImage = document.querySelector('.overlay-image');
-
-        window.addEventListener('scroll', function () {
-            const scrollPosition = window.scrollY;
-
-            // Adiciona a classe 'scrolled' quando o usuário rolar
-            if (scrollPosition > 50) { // Ajuste o valor conforme necessário
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
                 overlayImage.classList.add('scrolled');
             } else {
                 overlayImage.classList.remove('scrolled');
@@ -247,3 +64,15 @@
         });
     });
 </script>
+
+<style>
+    .overlay-image.scrolled {
+        bottom: -100px !important;
+    }
+
+    @media (max-width: 480px) {
+        .overlay-image.scrolled {
+            bottom: -20px !important;
+        }
+    }
+</style>

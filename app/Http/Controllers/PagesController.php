@@ -14,7 +14,6 @@ class PagesController extends Controller
     public function index()
     {
        
-
         //obter idioma do setLocale
         $lang = app()->getLocale();
 
@@ -31,7 +30,11 @@ class PagesController extends Controller
 
         $page = Page::whereTranslation('slug', $slug)->firstOrFail();
         
-        return view('frontend.pages.home', compact('menus', 'lang', 'page'));
+         $aboutPage = cache()->remember("aboutPage_{$lang}", 60 * 60, function () {
+            return Page::whereTranslation('slug', 'sobre-a-qorus')->firstOrFail();
+        });
+
+        return view('frontend.pages.home', compact('menus', 'lang', 'page', 'aboutPage'));
     }
     public function show($lang = 'pt', $slug = '')
     {
@@ -46,6 +49,7 @@ class PagesController extends Controller
 
         // Se o slug for nulo, redireciona para a página inicial do idioma
         if (is_null($slug)) {
+            dd("!");
             return view('frontend.homepage', compact('menus', 'lang'));
         }
 
@@ -73,7 +77,7 @@ class PagesController extends Controller
             });
             return view('frontend.pages.inovation', compact('menus', 'lang', 'page', 'otherTexts'));
         }
-
+       
         return view('frontend.pages.home', compact('menus', 'lang', 'page'));
     }
 
