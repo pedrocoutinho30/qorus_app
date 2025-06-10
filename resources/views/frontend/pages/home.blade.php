@@ -2,7 +2,7 @@
 
 @section('content')
 <div
-    class="w-screen mt-12"
+    class="w-screen"
     style="
     height: 100vh;
     background-image: url('{{ asset('storage/' . $page->image_1) }}');

@@ -1,97 +1,82 @@
 @extends('frontend.layout')
 
 @section('content')
-@if(session('success'))
-<div id="success-alert" class="fixed top-12 right-5 z-50 bg-green-100 text-green-800 border border-green-300 rounded px-4 py-3 text-sm shadow animate-fadeIn">
-    {{ session('success') }}
-</div>
-@endif
+<div class="w-screen max-w-full bg-gradient-to-b from-[#f8f4ee] to-white ">
+    @if(session('success'))
+    <div id="success-alert" class="fixed top-12 right-5 z-50 bg-green-100 text-green-800 border border-green-300 rounded px-4 py-3 text-sm shadow animate-fadeIn">
+        {{ session('success') }}
+    </div>
+    @endif
 
-@if($errors->any())
-<div id="error-alert" class="fixed top-12 right-5 z-50 bg-red-100 text-red-800 border border-red-300 rounded px-4 py-3 text-sm shadow animate-fadeIn">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    @if($errors->any())
+    <div id="error-alert" class="fixed top-12 right-5 z-50 bg-red-100 text-red-800 border border-red-300 rounded px-4 py-3 text-sm shadow animate-fadeIn">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <div class="relative flex flex-col justify-start space-y-6  px-6 sm:px-16 md:px-24 lg:px-24 xl:px-24  mb-[8vh] ">
 
-<div class="w-full max-w-full pt-24 bg-gradient-to-b from-[#f8f4ee] to-white">
-    <div class="relative">
-        <div class="absolute right-10 top-[30%] w-[300px] -translate-y-1/2 transition-all duration-1000 ease-in-out image-contacts-up">
-            <img src="{{ asset('img/Foguetao_Pagina05.svg') }}" alt="Foguetão" />
+
+        <!-- Imagem à direita (absoluta) -->
+        <div class="absolute top-[30%] right-10 w-[30%] xs:w-[30%] sm:w-[25%] md:w-[33%] lg:w-[30%] xl:w-[25%] pt-[13%] sm:pt-[23%] md:pt-[13%] lg:pt-[13%] xl:pt-[13%] px-6 sm:px-16 md:px-28 lg:px-24 xl:px-24 transition-all  md:block">
+            <!-- Mobile -->
+
+            <img
+                src="{{ asset('img/Foguetao_Pagina05.svg') }}" loading="lazy"
+                alt="Foguetão"
+                class="md:hidden rocket-rise"
+                style="--start-top: 10%; --end-top: -65.5%;" />
+
+            <!-- Desktop -->
+            <img
+                src="{{ asset('img/Foguetao_Pagina05.svg') }}" loading="lazy"
+                alt="Foguetão"
+                class=" hidden md:block rocket-rise"
+                style="--start-top: 150%; --end-top: -54%;" />
         </div>
 
-        <div class="text-black font-medium text-[72px] mt-[15%] ml-[5%]   ">
+        <!-- Título -->
+        @if( $page->getTranslatedAttribute('title', $lang) == 'Contact us!')
+        <br>
+        <br>
+        @endif
+        <div class="text-black text-4xl md:text-7xl pt-[50%] sm:pt-[25%] md:pt-[35%] lg:pt-[20%] xl:pt-[20%] font-medium tracking-wide">
             {!! $page->getTranslatedAttribute('body', $lang) !!}
         </div>
 
-        <hr class="my-10 mx-[5%] border-t-2 border-black" />
+        <!-- Linha -->
+        <hr class="border-t-2 border-black w-full my-12" />
+    </div>
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between w-full gap-10 text-black text-lg md:text-2xl mb-[12%] space-y-6  px-6 sm:px-16 md:px-24 lg:px-24 xl:px-24">
 
-        <div class="flex flex-col md:flex-row items-start justify-center gap-10 text-black text-[30px] mx-[6%] mb-[12%] font-regular">
-            <div class="flex-1 leading-tight">
+        <!-- Excerpt -->
+        <div class="flex-1">
+            <a href="https://www.google.com/maps/search/?api=1&query=Rua da Estrada, 915 4950-006 Abade de Neiva Barcelos" target="_blank" class="hover:underline">
                 {!! $page->getTranslatedAttribute('excerpt', $lang) !!}
-            </div>
-            <div class="flex flex-col gap-3 mr-[30%]">
-                <span>{!! $otherTexts[0]->getTranslatedAttribute('text', $lang) !!}</span>
-                <span>{!! $otherTexts[1]->getTranslatedAttribute('text', $lang) !!}</span>
-            </div>
+            </a>
+        </div>
+
+
+        <!-- Detalhes de contacto -->
+        <div class="flex flex-col md:mr-[20%]">
+            <a href="mailto:{{ ($otherTexts[0]->getTranslatedAttribute('text', $lang)) }}" class="hover:underline">
+                {!! $otherTexts[0]->getTranslatedAttribute('text', $lang) !!}
+            </a>
+            <span>{!! $otherTexts[1]->getTranslatedAttribute('text', $lang) !!}</span>
         </div>
     </div>
 
     @include('frontend.pages.form')
 
-    <div class="relative w-full">
-        <img src="{{ asset('storage/'.$page->image_1) }}" alt="" class="w-full h-auto block">
-    </div>
+
 
 </div>
+<div class="relative w-full ">
+    <a href="https://www.google.com/maps/search/?api=1&query=Rua da Estrada, 915 4950-006 Abade de Neiva Barcelos" target="_blank" class="hover:underline">
+        <img src="{{asset('storage/'.$page->image_1_mobile)}}" alt="" class="block md:hidden w-full h-auto">
+        <img src="{{asset('storage/'.$page->image_1)}}" alt="" class="hidden md:block w-full h-auto">
+</div>
 @endsection
-
-<style>
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .animate-fadeIn {
-        animation: fadeIn 0.5s ease-in-out;
-    }
-
-    .image-contacts-up.scrolled {
-        top: 40% !important;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const successAlert = document.getElementById("success-alert");
-        if (successAlert) {
-            setTimeout(() => {
-                successAlert.style.opacity = "0";
-                setTimeout(() => successAlert.remove(), 500);
-            }, 5000);
-        }
-
-        const overlayImageTop = document.querySelector('.image-contacts-up');
-
-        window.addEventListener('scroll', function () {
-            const imagePosition = overlayImageTop.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-
-            if (imagePosition <= windowHeight) {
-                overlayImageTop.classList.add('scrolled');
-            } else {
-                overlayImageTop.classList.remove('scrolled');
-            }
-        });
-    });
-</script>

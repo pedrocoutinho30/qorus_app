@@ -36,18 +36,37 @@ class FormController extends Controller
 
     public function sendEmail($validatedData)
     {
-        $emailContent = "Novo formulário submetido:\n\n";
-        $emailContent .= "Nome: {$validatedData['name']}\n";
-        $emailContent .= "Email: {$validatedData['email']}\n";
-        $emailContent .= "Telefone: {$validatedData['phone']}\n";
-        $emailContent .= "Mensagem: {$validatedData['message']}\n";
+        $emailContent = '
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            .content { background: #fff; padding: 20px; border-radius: 8px; }
+            h2 { color: #333; }
+            p { margin: 0 0 10px; }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <h2>Nova submissão de formulário no site</h2>
+            <p><strong>Nome:</strong> ' . e($validatedData['name']) . '</p>
+            <p><strong>Email:</strong> ' . e($validatedData['email']) . '</p>
+            <p><strong>Telefone:</strong> ' . e($validatedData['phone']) . '</p>
+            <p><strong>Mensagem:</strong></p>
+            <p>' . nl2br(e($validatedData['message'])) . '</p>
+        </div>
+    </body>
+    </html>
+';
 
         // Enviar o e-mail
-        Mail::raw($emailContent, function ($message) use ($validatedData) {
-            $message->to('destinatario@example.com') // Substitua pelo destinatário real
+
+        Mail::html($emailContent, function ($message) use ($validatedData) {
+            $message->to('info@qorusgroup.com')
                 ->subject('Novo Formulário Submetido')
                 ->from($validatedData['email'], $validatedData['name']);
         });
+
         // Enviar o e-mail para o destinatário
         // Aqui voce pode usar a biblioteca de e-mail do Laravel para enviar o e-mail
     }

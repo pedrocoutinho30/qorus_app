@@ -1,4 +1,4 @@
-<header class="fixed top-0 w-full z-50 bg-white bg-opacity-90 backdrop-blur-md shadow-sm min-h-[6vh] flex items-center px-6 md:px-12">
+<header class="fixed top-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-sm shadow-sm min-h-[6vh] flex items-center px-6 md:px-12">
     <div class="container mx-auto flex items-center justify-between w-full">
         <!-- Logo -->
         <div>
@@ -15,12 +15,13 @@
             $url = url($lang . '/' . $slug);
             $title = $menu->getTranslatedAttribute('title', $lang);
             if( $title == "Entre em contacto connosco!"){
-                $title = "Contactos";
+            $title = "Contactos";
             }
             @endphp
             @if($title !== "Sobre a Qorus" && $title !== "About Qorus")
-            <a href="{{ $url }}" class="text-black font-medium text-base hover:underline">
-                {{ $title }}
+            <a href="{{ $url }}" class="relative text-black font-medium text-base group">
+                <span class="relative z-10">{{ $title }}</span>
+                <span class="absolute left-0 bottom-0 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
             </a>
             @endif
             @endforeach
@@ -44,16 +45,16 @@
 </header>
 
 <!-- Menu mobile fullscreen -->
-<div id="mobile-menu" class="hidden fixed inset-0 z-50  flex flex-col bg-[rgb(248,244,238)]">
+<div id="mobile-menu" class="hidden fixed inset-0 z-50 flex flex-col bg-[rgb(248,244,238)] transform -translate-y-full transition-transform duration-2000 ease-in-out">
     <!-- Header do menu mobile fixo no topo -->
     <div class="flex items-center justify-between px-6 py-4 h-[6vh] bg-white shadow-md">
         <a href="/" class="flex items-center">
-            <img src="{{ asset('img/Logo_Qorus.png') }}" alt="Logo" class="h-10 object-contain">
+            <img src="{{ asset('img/Logo_Qorus.png') }}" alt="Logo" class="h-10 custom-logo object-contain">
         </a>
         <button id="close-btn" class="text-3xl font-bold focus:outline-none">&times;</button>
     </div>
 
-    <h2 class="ml-6 mt-36 mb-16 text-[40px] font-medium text-black">Menu</h2>
+    <h2 class="custom-margin ml-6 mt-36 mb-16 text-[40px] font-medium text-black">Menu</h2>
 
     <!-- Menu mobile opções ocupando resto do ecrã -->
     <nav class="flex flex-col px-6 py-8 mt-8 overflow-auto" style="flex-grow:1;">
@@ -63,11 +64,12 @@
         $url = url($lang . '/' . $slug);
         $title = $menu->getTranslatedAttribute('title', $lang);
         if( $title == "Entre em contacto connosco!"){
-            $title = "Contactos";
+        $title = "Contactos";
         }
         @endphp
         @if($title !== "Sobre a Qorus" && $title !== "About Qorus")
-        <a href="{{ $url }}" class="mb-10 text-[28px] font-medium font-aeonik text-black hover:underline">
+        <a href="{{ $url }}"
+            class="relative inline-block mb-10 text-[28px] text-black group">
             {{ $title }}
         </a>
         @endif
@@ -91,12 +93,20 @@
 
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
-            body.style.overflow = 'hidden'; // bloqueia scroll do fundo
+            setTimeout(() => {
+                mobileMenu.classList.remove('-translate-y-full');
+            }, 10);
+
+            body.style.overflow = 'hidden';
         });
 
         closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            body.style.overflow = 'auto'; // libera scroll do fundo
+            mobileMenu.classList.add('-translate-y-full');
+            body.style.overflow = 'auto';
+
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 10); // mesmo tempo da duração da transição
         });
     });
 </script>
@@ -107,9 +117,11 @@
         #hamburger-btn {
             display: none !important;
         }
+
         #mobile-menu {
             display: none !important;
         }
+
         nav.desktop-menu {
             display: flex !important;
         }
@@ -120,8 +132,23 @@
         #hamburger-btn {
             display: block !important;
         }
+
         nav.desktop-menu {
             display: none !important;
+        }
+    }
+
+    @media (max-width: 400px) and (max-height: 700px) {
+        .custom-margin {
+            margin-top: 2rem;
+            /* mt-12 = 3rem */
+            margin-bottom: 1rem;
+            /* mb-8 = 2rem */
+        }
+
+        .custom-logo {
+            height: 1.5rem !important;
+            /* diminui de h-10 (2.5rem) para algo menor, ajuste se quiser */
         }
     }
 </style>
