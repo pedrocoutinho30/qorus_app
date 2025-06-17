@@ -43,7 +43,7 @@
         <br>
         <br>
         @endif
-        <div class="text-black text-4xl md:text-7xl pt-[50%] sm:pt-[25%] md:pt-[35%] lg:pt-[20%] xl:pt-[20%] font-medium tracking-wide">
+        <div class="text-black text-4xl md:text-7xl pt-[50%] sm:pt-[25%] md:pt-[35%] lg:pt-[20%] xl:pt-[20%] font-medium    ">
             {!! $page->getTranslatedAttribute('body', $lang) !!}
         </div>
 

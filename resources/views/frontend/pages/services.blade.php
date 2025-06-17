@@ -24,7 +24,7 @@
     <div class="flex flex-col justify-start space-y-6 pt-[80px] px-6 sm:px-16 md:px-24 lg:px-24 xl:px-24 mb-[10vh]">
 
         <!-- Título -->
-        <div class="text-[42px] xs:text-[42px] sm:text-[42px] md:text-[42px] lg:text-[68px] xl:text-[68px] 2xl:text-[68px] font-medium text-black mt-[10%] md:block tracking-wide">
+        <div class="text-[42px] xs:text-[42px] sm:text-[42px] md:text-[42px] lg:text-[68px] xl:text-[68px] 2xl:text-[68px] font-medium text-black mt-[10%] md:block    ">
             {{$page->getTranslatedAttribute('title', $lang)}}
         </div>
 
@@ -36,18 +36,18 @@
 
             <article class="flex flex-col xl:flex-row xl:items-start gap-4">
                 {{-- Título --}}
-                <h2 class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0 tracking-wider">
+                <h2 class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0  ">
                     {!! $otherText->getTranslatedAttribute('title', $lang) !!}
                 </h2>
 
                 {{-- Texto (Mobile: visível, Desktop: oculto) --}}
-                <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed max-w-full tracking-normal ">
+                <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed max-w-full    ">
                     {{-- Texto sem tags HTML --}}
                     {!!strip_tags($otherText->getTranslatedAttribute('text', $lang)) !!}
                 </div>
 
                 {{-- Texto (Desktop) --}}
-                <div class="hidden md:block w-full  text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed tracking-wider">
+                <div class="hidden md:block w-full  text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed  ">
                     {!! strip_tags($otherText->getTranslatedAttribute('text', $lang)) !!}
                 </div>
             </article>

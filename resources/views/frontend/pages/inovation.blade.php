@@ -8,12 +8,12 @@
         </div>
 
         {{-- Versão Mobile - texto sem tags HTML --}}
-        <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] mr-5 transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2 tracking-normal">
+        <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] mr-5 transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2   ">
             {!! strip_tags($page->getTranslatedAttribute('body', $lang)) !!}
         </div>
 
         {{-- Versão Desktop - texto com HTML --}}
-        <div class="hidden md:block text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2 tracking-wider">
+        <div class="hidden md:block text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] transition-opacity duration-[1500ms] ease-in-out fade-in body-about text-gray-500 mt-2  ">
             {!! $page->getTranslatedAttribute('body', $lang) !!}
         </div>
     </div>
@@ -44,7 +44,7 @@
             @if($otherText->getTranslatedAttribute('title', $lang) == 'Práticas<br>Sustentáveis' || $otherText->getTranslatedAttribute('title', $lang) == 'Sustainable<br>Practices')
             <article class="flex flex-col xl:flex-row xl:items-start gap-bg-gray-1004 mt-[10%] pt-1">
                 {{-- Título --}}
-                <h2 class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] tracking-wider">
+                <h2 class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px]  ">
                     {!! $otherText->getTranslatedAttribute('title', $lang) !!}
                 </h2>
 
@@ -54,9 +54,9 @@
 
             <article class="flex flex-col xl:flex-row xl:items-start gap-4">
                 {{-- Título --}}
-                <div class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0 tracking-wider">
+                <div class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0  ">
                     <div class="flex flex-col">
-                        <span class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl tracking-wider ">
+                        <span class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl   ">
                             {!! $otherText->getTranslatedAttribute('title', $lang) !!}
                         </span>
                         <img src="{{ asset('storage/' . $otherText->icon) }}" alt="Imagem" class="mt-8 ml-[6%] xs:ml-[6%] sm:ml-[6%] md:ml-[8%] lg:ml-[10%] xl:ml-[20%] w-[17%] sm:w-[15%] md:w-[17%] lg:w-[20%] xl:w-[20%] h-auto" />
@@ -65,13 +65,13 @@
                 </div>
 
                 {{-- Texto (Mobile: visível, Desktop: oculto) --}}
-                <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed max-w-full tracking-normal ">
+                <div class="block md:hidden text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed max-w-full    ">
                     {{-- Texto sem tags HTML --}}
                     {!!strip_tags($otherText->getTranslatedAttribute('text', $lang)) !!}
                 </div>
 
                 {{-- Texto (Desktop) --}}
-                <div class="hidden md:block w-full ml-16 sm:ml-0 mr-16 md:mr-0  text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed tracking-wider">
+                <div class="hidden md:block w-full ml-16 sm:ml-0 mr-16 md:mr-0  text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] leading-relaxed  ">
                     {!! strip_tags($otherText->getTranslatedAttribute('text', $lang)) !!}
                 </div>
             </article>
