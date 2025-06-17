@@ -1,4 +1,4 @@
-<header class="fixed top-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur-sm shadow-sm min-h-[6vh] flex items-center px-6 md:px-12">
+<header class="fixed top-0 w-full z-50 bg-white bg-opacity-70 backdrop-blur shadow-sm min-h-[6vh] flex items-center px-6 md:px-12">
     <div class="container mx-auto flex items-center justify-between w-full">
         <!-- Logo -->
         <div>
