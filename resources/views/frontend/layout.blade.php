@@ -12,13 +12,13 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 
     <link rel="icon" href="{{ asset('img/icon.png') }}" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
 
     <!-- Preload fonts with onload to apply -->
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter:400%7CRoboto+Mono:400,200,300,600,700%7COpen+Sans:400,300&amp;subset=latin,vietnamese,khmer,cyrillic-ext,greek-ext,greek,devanagari,latin-ext,cyrillic" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter:400%7CRoboto+Mono:400,200,300,600,700%7COpen+Sans:400,300&amp;subset=latin,vietnamese,khmer,cyrillic-ext,greek-ext,greek,devanagari,latin-ext,cyrillic" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400%7CRoboto+Mono:400,200,300,600,700%7COpen+Sans:400,300&amp;subset=latin,vietnamese,khmer,cyrillic-ext,greek-ext,greek,devanagari,latin-ext,cyrillic">
-    </noscript>
+    </noscript> -->
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -62,7 +62,7 @@
 
 
     @include('frontend.partials.header')
-    <main class="flex-1 z-10 w-full {{ Request::is('pt/inovacao-e-sustentabilidade') || Request::is('en/innovation-and-sustainability') ? '' : 'pt-[6vh]' }}">
+    <main class="font-aeonik flex-1 z-10 w-full {{ Request::is('pt/inovacao-e-sustentabilidade') || Request::is('en/innovation-and-sustainability') ? '' : 'pt-[6vh]' }}">
         @yield('content')
     </main>
 
