@@ -3,7 +3,7 @@
 @section('content')
 <div class="w-screen max-w-full bg-gradient-to-b from-[#f8f4ee] to-white ">
     <div class="flex flex-col justify-start space-y-6 pt-[80px] mb-[10vh] ml-16 mr-16">
-        <div class="text-[28px] xs:text-[32px] sm:text-[42px] md:text-[42px] lg:text-[68px] xl:text-[68px] 2xl:text-[68px] font-medium text-black mt-[10%] md:block tracking-wide">
+        <div class="text-[28px] xs:text-[32px] sm:text-[42px] md:text-[42px] lg:text-[68px] xl:text-[68px] 2xl:text-[68px] font-medium text-black mt-[10%] md:block ">
             {!!$page->getTranslatedAttribute('excerpt', $lang)!!}
         </div>
 
@@ -42,11 +42,11 @@
 
             @foreach($otherTexts as $otherText)
             @if($otherText->getTranslatedAttribute('title', $lang) == 'Práticas<br>Sustentáveis' || $otherText->getTranslatedAttribute('title', $lang) == 'Sustainable<br>Practices')
-            <article class="flex flex-col xl:flex-row xl:items-start gap-bg-gray-1004 mt-[10%] pt-1">
+            <article class="flex flex-col xl:flex-row xl:items-start gap bg-gray-1004 mt-[10%] pt-1">
                 {{-- Título --}}
-                <h2 class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px]  ">
+                <span class="font-semibold text-[20px] sm:text-[20px] md:text-[40px] lg:text-[50px] xl:text-[50px] 2xl:text-[50px] md:w-[500px]  ">
                     {!! $otherText->getTranslatedAttribute('title', $lang) !!}
-                </h2>
+                </span>
 
             </article>
             @else
@@ -54,7 +54,7 @@
 
             <article class="flex flex-col xl:flex-row xl:items-start gap-4">
                 {{-- Título --}}
-                <div class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0  ">
+                <div class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[48px] xl:text-[32px] 2xl:text-[36px] md:text-4xl md:w-[500px] mt-2 md:mt-0  ">
                     <div class="flex flex-col">
                         <span class="font-semibold text-[20px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] 2xl:text-[36px] md:text-4xl   ">
                             {!! $otherText->getTranslatedAttribute('title', $lang) !!}
